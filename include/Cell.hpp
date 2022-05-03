@@ -19,12 +19,12 @@ public:
         cell.SetX(_coordinates.first);
         cell.SetY(_coordinates.second);
     }
-    char GetState(void) { return _state; }
+    char GetState(void) const { return _state; }
     void SetState(char state) { _state = state; }
 
-    int  GetX(void)  { return _coordinates.first; }
+    int  GetX(void) const { return _coordinates.first; }
     void SetX(int x) { _coordinates.first = x;}
 
-    int  GetY(void)  { return _coordinates.second; }
+    int  GetY(void) const { return _coordinates.second; }
     void SetY(int y) { _coordinates.second = y; }
 };
