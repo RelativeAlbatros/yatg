@@ -21,10 +21,13 @@ public:
     }
     void DrawBoard() const {
         for (int i=0; i<LENGTH; ++i) {
+            std::cout << "\n\t";
             for (int j=0; j<WIDTH; ++j) {
-                std::cout << GetCellState(j, i);
+                if (j == 1)
+                    std::cout << " | " << GetCellState(j, i) << " | ";
+                else
+                    std::cout << GetCellState(j, i);
             }
-            std::cout << std::endl;
         }
     }
     // return false if there's still a blank cell

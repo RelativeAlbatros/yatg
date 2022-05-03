@@ -10,8 +10,8 @@ void help_message(void) {
 
 int char_to_int(char c) {
     if (c < '1' || c > '3') {
-        std::cerr << c << " is not an int" << std::endl;
-        throw std::invalid_argument("invalid conversion of char");
+        std::cerr << "invalid input: " << c << std::endl;
+        return 9;
     }
     return (c - '0');
 }
@@ -29,6 +29,8 @@ int main(int argc, char *argv[]) {
         std::cin >> input;
         x = char_to_int(input[0]);
         y = char_to_int(input[1]);
+        if (x == 9 || y == 9)
+            continue;
         if (input == "quit" || input == "exit") {
             break;
         } else if (input == "help") {
@@ -41,15 +43,15 @@ int main(int argc, char *argv[]) {
         char gamestate = board.CheckWin();
         if (gamestate == 'x') {
             board.DrawBoard();
-            std::cout << "player x won!" << std::endl;
+            std::cout << std::endl << "player x won!" << std::endl;
             break;
         } else if (gamestate == 'o') {
             board.DrawBoard();
-            std::cout << "player o won!" << std::endl;
+            std::cout << std::endl << "player o won!" << std::endl;
             break;
         } else if (gamestate == 't') {
             board.DrawBoard();
-            std::cout << "it's a tie." << std::endl;
+            std::cout << std::endl << "it's a tie." << std::endl;
             break;
         }
         if (turn == 'x')
