@@ -1,3 +1,5 @@
+#include "Cell.hpp"
+
 Cell::Cell(char state, int x, int y)
     : _state(state), _coordinates({x, y})
 {}

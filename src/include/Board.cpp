@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Board.hpp"
 
 Board::Board()  {
     for (int i=0; i<LENGTH; ++i) {
