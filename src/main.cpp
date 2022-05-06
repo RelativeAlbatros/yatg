@@ -1,17 +1,16 @@
 #include <iostream> 
 #include <string>
 #include <cstdlib>
-#include "Board.hpp"
+#include "include/Board.hpp"
 
-void help_message(void) {
-    std::cout << "> [x][y]" << std::endl
-              << "example: 12" << std::endl;
+static void help_message(void) {
+    std::cout << "> [x][y]\n"
+              << "example: 12\n";
 };
 
-int char_to_int(char c) {
+static int char_to_int(char c) {
     if (c < '1' || c > '3') {
-        std::cerr << "invalid input: " << c << std::endl;
-        return 9;
+        throw std::invalid_argument("char_to_int: char must be between 1 and 3");
     }
     return (c - '0');
 }
@@ -23,12 +22,17 @@ int main(int argc, char *argv[]) {
     std::string input;
     Board board;
     while (true) {
-        std::cout << "turn: " << turn << std::endl;
+        std::cout << "turn: " << turn << "\n";
         board.DrawBoard();
-        std::cout << std::endl << "> ";
+        std::cout << "\n> ";
         std::cin >> input;
-        x = char_to_int(input[0]);
-        y = char_to_int(input[1]);
+        try {
+            x = char_to_int(input[0]);
+            y = char_to_int(input[1]);
+        } catch(exception &e) {
+            std::cout << "invalid argument.\n";
+            continue;
+        }
         if (x == 9 || y == 9)
             continue;
         if (input == "quit" || input == "exit") {
@@ -43,15 +47,15 @@ int main(int argc, char *argv[]) {
         char gamestate = board.CheckWin();
         if (gamestate == 'x') {
             board.DrawBoard();
-            std::cout << std::endl << "player x won!" << std::endl;
+            std::cout << "\nplayer x won!\n"
             break;
         } else if (gamestate == 'o') {
             board.DrawBoard();
-            std::cout << std::endl << "player o won!" << std::endl;
+            std::cout << "\nplayer o won!\n"
             break;
         } else if (gamestate == 't') {
             board.DrawBoard();
-            std::cout << std::endl << "it's a tie." << std::endl;
+            std::cout << "\nit's a tie.\n";
             break;
         }
         if (turn == 'x')
