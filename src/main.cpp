@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
         try {
             x = char_to_int(input[0]);
             y = char_to_int(input[1]);
-        } catch(exception &e) {
+        } catch(std::exception &e) {
             std::cout << "invalid argument.\n";
             continue;
         }
@@ -47,11 +47,11 @@ int main(int argc, char *argv[]) {
         char gamestate = board.CheckWin();
         if (gamestate == 'x') {
             board.DrawBoard();
-            std::cout << "\nplayer x won!\n"
+            std::cout << "\nplayer x won!\n";
             break;
         } else if (gamestate == 'o') {
             board.DrawBoard();
-            std::cout << "\nplayer o won!\n"
+            std::cout << "\nplayer o won!\n";
             break;
         } else if (gamestate == 't') {
             board.DrawBoard();

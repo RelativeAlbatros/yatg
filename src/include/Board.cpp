@@ -11,11 +11,11 @@ Board::Board()  {
     }
 }
 
-Board::GetCell(int x, int y) { 
+Cell &Board::GetCell(int x, int y) { 
         return _board[x][y];
 }
 
-Board::DrawBoard() {
+void Board::DrawBoard() const {
     for (int i=0; i<LENGTH; ++i) {
         std::cout << "\n\t";
         for (int j=0; j<WIDTH; ++j) {
@@ -28,7 +28,7 @@ Board::DrawBoard() {
 }
 
 // return false if there's still a blank cell
-Board::CheckTie() {
+bool Board::CheckTie() const {
     for (int i=0; i<LENGTH; ++i) {
         for (int j=0; j<WIDTH; ++j) {
             if (GetCellState(i, j) == BLANK_STATE)
@@ -38,7 +38,7 @@ Board::CheckTie() {
     return true;
 }
 
-Board::CheckWin() {
+char Board::CheckWin() const {
     // Horizontal from top left
     if (GetCellState(0,0) == GetCellState(1,0) && GetCellState(0,0) == GetCellState(2,0)) {
         return GetCellState(0,0);
@@ -79,11 +79,11 @@ Board::CheckWin() {
     }
 }
     
-Board::GetCellState(int x, int y) const { 
+char Board::GetCellState(int x, int y) const { 
     return _board[x][y].GetState();
 }
 
-Board::SetCellState(int x, int y, char state) { 
+bool Board::SetCellState(int x, int y, char state) { 
     if (x < 0 || x > 3 || y < 0 || y > 3) {
         std::cerr << "x and y coordinates must be between 0 and 2";
         return 1;

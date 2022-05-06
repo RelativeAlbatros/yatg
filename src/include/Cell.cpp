@@ -8,17 +8,17 @@ Cell::Cell(void)
     : _state(BLANK_STATE), _coordinates({0, 0})
 {}
 
-Cell::CopyCell(Cell &cell) {
+void Cell::CopyCell(Cell &cell) {
     cell.SetState(_state);
     cell.SetX(_coordinates.first);
     cell.SetY(_coordinates.second);
 }
 
-Cell::GetState(void) const { return _state; }
-Cell::SetState(char state) { _state = state; }
+char Cell::GetState(void) const { return _state; }
+void Cell::SetState(char state) { _state = state; }
 
-Cell::GetX(void) const { return _coordinates.first; }
-Cell::SetX(int x) { _coordinates.first = x;}
+int Cell::GetX(void) const { return _coordinates.first; }
+void Cell::SetX(int x) { _coordinates.first = x;}
 
-Cell::GetY(void) const { return _coordinates.second; }
-Cell::SetY(int y) { _coordinates.second = y; }
+int Cell::GetY(void) const { return _coordinates.second; }
+void Cell::SetY(int y) { _coordinates.second = y; }
