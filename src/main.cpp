@@ -15,7 +15,7 @@ static int char_to_int(char c) {
     return (c - '0');
 }
 
-int main(int argc, char *argv[]) { 
+static void game(int &x_score, int &o_score) {
     char c;
     char turn = 'x';
     int x, y;
@@ -48,10 +48,12 @@ int main(int argc, char *argv[]) {
         if (gamestate == 'x') {
             board.DrawBoard();
             std::cout << "\nplayer x won!\n";
+            x_score += 1;
             break;
         } else if (gamestate == 'o') {
             board.DrawBoard();
             std::cout << "\nplayer o won!\n";
+            o_score += 1;
             break;
         } else if (gamestate == 't') {
             board.DrawBoard();
@@ -63,5 +65,18 @@ int main(int argc, char *argv[]) {
         else if (turn == 'o')
             turn = 'x';
     }
+}
+
+int main(int argc, char *argv[]) { 
+    int o_score = 0;
+    int x_score = 0;
+    char play = 'y';
+    do {
+        game(x_score, o_score);
+        std::cout << "x: " << x_score << " o: " << o_score << "\n";
+        std::cout << "play again?\n> ";
+        std::cin >> play;
+        std::cout << std::endl;
+    } while (play == 'y');
 	return 0; 
 } 
