@@ -16,8 +16,9 @@ Cell &Board::GetCell(int x, int y) {
 }
 
 void Board::DrawBoard() const {
+    std::cout << "\t1 | 2 | 3\n";
     for (int i=0; i<LENGTH; ++i) {
-        std::cout << "\n\t";
+        std::cout << "\n" << i+1 << " |" << "\t";
         for (int j=0; j<WIDTH; ++j) {
             if (j == 1)
                 std::cout << " | " << GetCellState(j, i) << " | ";
