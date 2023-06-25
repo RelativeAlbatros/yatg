@@ -27,8 +27,8 @@ static void game(int &x_score, int &o_score) {
         std::cout << "\n> ";
         std::cin >> input;
         try {
-            x = char_to_int(input[0]);
-            y = char_to_int(input[1]);
+            y = char_to_int(input[0]);
+            x = char_to_int(input[1]);
         } catch(std::exception &e) {
             std::cout << "invalid argument.\n";
             continue;
